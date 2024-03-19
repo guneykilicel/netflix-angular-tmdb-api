@@ -1,0 +1,112 @@
+<!--
+<header
+  class="h-[68px] z-10 bg-gray-900 sticky top-0 flex items-center justify-between px-10"
+>
+   logo + navitems 
+  <div class="flex gap-5">
+    <img width="110" src="/assets/netflix.png" alt="Netflix Logo" />
+    <ul class="flex items-center" *ngFor="let item of navList">
+      <li
+        class="text-neutral-200 cursor-pointer text-sm font-extralight hover:text-gray-400 transition-[1s]"
+      >
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+  welcome user | profile img | signout 
+  <div class="flex items-center gap-4 text-white">
+    <div class="flex items-center gap-2">
+      <a href="/"
+        ><span>Welcome <strong>Güney</strong></span></a
+      >
+      <img class="rounded-full" [src]="userImg" width="42" alt="user-img" />
+    </div>
+     | 
+    <a href="">Signout</a>
+  </div>
+</header>
+
+-->
+
+<header class="sticky z-10 bg-gray-900">
+    <div class="flex items-center justify-between">
+      <nav class="h-[68px] flex w-full items-center p-6 lg:px-8" aria-label="Global">
+        <img width="110" src="/assets/netflix.png" alt="Netflix Logo" />
+        <div class="hidden lg:flex gap-5 ml-10">
+          <ul class="flex items-center" *ngFor="let item of navList">
+            <li
+              class="text-neutral-200 cursor-pointer text-sm font-extralight hover:text-gray-400 transition-[1s]"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-4 text-white justify-end ml-auto">
+          <div class="flex items-center gap-2 text-sm">
+            <a href="/"><span>Welcome <strong>Güney</strong></span></a>
+            <img class="rounded-full" [src]="userImg" width="42" alt="user-img" />
+          </div>
+          | 
+          <a href="">Signout</a>
+        </div>
+        
+      </nav>
+      
+      <div>
+        <button class="p-5 text-white lg:hidden" (click)="toggleNavbar()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+          </svg>          
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div [ngClass]="{'hidden': !showMenu, 'flex': showMenu}" class="lg:hidden" role="dialog" aria-modal="true">
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-10"></div>
+      <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="/assets/netflix.png" alt="">
+          </a>
+          <button (click)="toggleNavbar()" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <span class="sr-only">Close menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/30">
+            <div class="space-y-2 py-6">
+              <div class="-mx-3">
+                <!-- 'Product' sub-menu, show/hide based on menu state. -->
+                <div class="mt-2 space-y-2" id="disclosure-1">
+                  <ul class="flex items-center" *ngFor="let item of navList">
+                    <li
+                    class="cursor-pointer block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-100"
+                    >
+                      {{ item }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
+              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a> -->
+            </div>
+            <div class="py-6">
+              <div class="flex items-center gap-2 text-sm">
+                <img class="rounded-full" [src]="userImg" width="42" alt="user-img" />
+                <a ><span>Welcome <strong>Güney</strong></span></a>
+              </div>
+              <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-100">Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
